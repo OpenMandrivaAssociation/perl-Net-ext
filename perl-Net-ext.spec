@@ -1,22 +1,26 @@
-%define real_name Net-ext
+%define upstream_name       Net-ext
+%define upstream_version    1.011
 
-Summary:	Net-ext module for perl 
-Name:		perl-%{real_name}
-Version:	1.011
-Release: %mkrel 8
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+Summary:    Net-ext module for perl
 License:	GPL or Artistic
 Group:		Development/Perl
-URL:		http://search.cpan.org/dist/%{real_name}
-Source0:	ftp://ftp.perl.org/pub/CPAN/modules/by-module/Net/%{real_name}-%{version}.tar.bz2
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source:     http://www.cpan.org/modules/by-module/Net/%{upstream_name}-%{upstream_version}.tar.gz
+# http://rt.cpan.org/Public/Bug/Display.html?id=43071
+Patch:      Net-ext-fix-segfault.patch
 BuildRequires:	perl-devel
 #BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Net-ext module for perl
 
 %prep
-%setup -q -n %{real_name}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version} 
+%patch -p 1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -35,18 +39,7 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc ChangeLog README
-%dir %{perl_vendorlib}/*/auto/Net/Gen
-%dir %{perl_vendorlib}/*/auto/Net/UNIX
-%dir %{perl_vendorlib}/*/auto/Net/Inet
-%dir %{perl_vendorlib}/*/auto/Net/UDP
-%{perl_vendorlib}/*/auto/Net/Gen/*
-%{perl_vendorlib}/*/auto/Net/UNIX/*
-%{perl_vendorlib}/*/auto/Net/Inet/*
-%{perl_vendorlib}/*/auto/Net/UDP/*
-%{perl_vendorlib}/*/Net/*.pm
-%dir %{perl_vendorlib}/*/Net/UNIX
-%dir %{perl_vendorlib}/*/Net/TCP
-%{perl_vendorlib}/*/Net/UNIX/*
-%{perl_vendorlib}/*/Net/TCP/*
+%{perl_vendorarch}/auto/Net
+%{perl_vendorarch}/Net
 %{_mandir}/*/*
 
