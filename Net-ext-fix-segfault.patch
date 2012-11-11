@@ -1,0 +1,12 @@
+diff -Naur -x '*~' Net-ext-1.011/Gen.xs Net-ext-1.011-fix-segfault/Gen.xs
+--- Net-ext-1.011/Gen.xs	2002-04-10 13:05:58.000000000 +0200
++++ Net-ext-1.011-fix-segfault/Gen.xs	2009-09-13 15:49:51.000000000 +0200
+@@ -146,7 +146,7 @@
+     CV *cv;
+     klen = strlen(name);
+     (void) hv_fetch(missing, name, klen, TRUE);
+-    cv = newXS(name, NULL, file); /* newSUB with no block */
++    cv = newXS(name, Perl_cv_undef, file); /* newSUB with no block */
+     sv_setsv((SV*)cv, &PL_sv_no); /* prototype it as "()" */
+ }
+ 
