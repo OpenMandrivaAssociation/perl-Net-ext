@@ -11,6 +11,7 @@ Url:        https://search.cpan.org/dist/%{upstream_name}
 Source:     http://www.cpan.org/modules/by-module/Net/%{upstream_name}-%{upstream_version}.tar.gz
 # http://rt.cpan.org/Public/Bug/Display.html?id=43071
 Patch:      Net-ext-fix-segfault.patch
+BuildRequires:	make
 BuildRequires:	perl-devel
 #BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
