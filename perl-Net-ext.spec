@@ -2,13 +2,13 @@
 %define upstream_version    1.011
 
 Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:	5
+Version:    %{upstream_version}
+Release:	6
 Summary:    Net-ext module for perl
 License:	GPL or Artistic
 Group:		Development/Perl
-Url:        https://search.cpan.org/dist/%{upstream_name}
-Source:     http://www.cpan.org/modules/by-module/Net/%{upstream_name}-%{upstream_version}.tar.gz
+Url:        https://metacpan.org/dist/Net-ext
+Source:     https://cpan.metacpan.org/authors/id/S/SP/SPIDB/Net-ext-%{upstream_version}.tar.gz
 # http://rt.cpan.org/Public/Bug/Display.html?id=43071
 Patch:      Net-ext-fix-segfault.patch
 BuildRequires:	make
@@ -78,7 +78,7 @@ rm -rf %{buildroot}
 - rebuild
 
 
-* Fri Apr 28 2006 Nicolas Lécureuil <neoclust@mandriva.org> 1.011-2mdk
+* Fri Apr 28 2006 Nicolas Lï¿½cureuil <neoclust@mandriva.org> 1.011-2mdk
 - Fix SPEC according to Perl Policy
 	- Source URL
 - use mkrel
