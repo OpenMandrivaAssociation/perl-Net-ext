@@ -1,14 +1,12 @@
 %define upstream_name       Net-ext
-%define upstream_version    1.011
-
 Name:       perl-%{upstream_name}
-Version:    %{upstream_version}
-Release:	6
+Version:    1.011
+Release:	7
 Summary:    Net-ext module for perl
 License:	GPL or Artistic
 Group:		Development/Perl
 Url:        https://metacpan.org/dist/Net-ext
-Source:     https://cpan.metacpan.org/authors/id/S/SP/SPIDB/Net-ext-%{upstream_version}.tar.gz
+Source:     https://cpan.metacpan.org/authors/id/S/SP/SPIDB/Net-ext-%{version}.tar.gz
 # http://rt.cpan.org/Public/Bug/Display.html?id=43071
 Patch:      Net-ext-fix-segfault.patch
 BuildRequires:	make
@@ -20,7 +18,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}
 Net-ext module for perl
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version} 
+%setup -q -n %{upstream_name}-%{version} 
 %patch -p 1
 
 %build
